@@ -26,14 +26,14 @@ lst="["
 if [ -d "$videos_dir" ]; then
     # List all folders (directories) within the specified directory
     echo "Folders in $videos_dir:"
-    while IFS= read -r folder; do
+    while IFS= read -r -d '' folder; do
         echo "$folder"
 
         # Find .mp4 files in the folder and append their paths to lst
         while IFS= read -r -d '' video; do
             lst+="\"$video\", "
         done < <(find "$folder" -type f -name "*.mp4" -print0)
-    done < <(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d)
+    done < <(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0)
     
     # Remove the last comma and space
     lst="${lst%, }"
