@@ -14,7 +14,7 @@ for ARGUMENT in "$@"; do
 	export "$KEY"="$VALUE"
 done
 
-i5O_videos="/data/i5O/i5OData/undercover-left/videos/"
+i5O_videos="/data/i5O/i5OData/undercover-left/videos/20220412/"
 
 # -------------------------------------------------
 
