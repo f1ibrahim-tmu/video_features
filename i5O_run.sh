@@ -21,7 +21,7 @@ root_dir="/data/i5O/i5OData/undercover-left/videos/"
 for dir in "$root_dir"*/; do
     if [ -d "$dir" ]; then
         # Check if the directory contains .mp4 files
-        mp4_files=("$dir"*.mp4)
+        mp4_files="$dir"*.mp4
         if [ ${#mp4_files[@]} -gt 0 ]; then
             # List subdirectory and .mp4 files in the current directory
             echo "Directory: $dir"
