@@ -15,6 +15,7 @@ for ARGUMENT in "$@"; do
 done
 
 i5O_videos="/data/i5O/i5OData/undercover-left/videos/20220412/"
+print $i5O_videos
 
 # -------------------------------------------------
 
@@ -25,10 +26,10 @@ count=0
 for vid in $(find $i5O_videos -name "*.mp4"); do
 
   # ensure that there is at least 20GB of data left
-  if [ $(expr $(df -B1 /data/ | awk 'NR==2 {print $4}') / 1000000000) -gt 10 ]; then
+  # if [ $(expr $(df -B1 /data/ | awk 'NR==2 {print $4}') / 1000000000) -gt 10 ]; then
 
-	unset IFS
-	set +f
+	# unset IFS
+	# set +f
  
   if [[ $count -ne 0 ]]; then
     lst="$lst, $vid"
