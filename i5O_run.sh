@@ -18,7 +18,7 @@ done
 root_dir="/data/i5O/i5OData/undercover-left/videos/"
 
 # Iterate through each subdirectory that contains .mp4 files
-for dir in "$root_dir"; do
+for dir in "$root_dir"*/; do
     if [ -d "$dir" ] && ls -1 "$dir"/*.mp4 &>/dev/null; then
         # Process .mp4 files in the current directory
         echo "Processing files in: $dir"
