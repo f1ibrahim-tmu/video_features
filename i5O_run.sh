@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is to run the program one video at a time automatically, and ensure that each folder has only one videos.
+# This script is to run the program one video at a time automatically (video paths variable takes a list of video path inputs), and ensure that each folder has only one videos.
 #
 
 IFS=$'\n'
@@ -19,16 +19,34 @@ videos_dir="/data/i5O/i5OData/undercover-left/videos/"
 
 echo $videos_dir
 
+# Variable to store the list of video paths
+lst="["
+
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # List all folders (directories) within the specified directory
     echo "Folders in $videos_dir:"
-    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
+    while IFS= read -r folder; do
         echo "$folder"
-    done
+
+        # Find .mp4 files in the folder and append their paths to lst
+        while IFS= read -r -d '' video; do
+            lst+="\"$video\", "
+        done < <(find "$folder" -type f -name "*.mp4" -print0)
+    done < <(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d)
+    
+    # Remove the last comma and space
+    lst="${lst%, }"
 else
     echo "Directory $videos_dir does not exist."
 fi
+
+# Finalize the list variable
+lst+="]"
+
+# Print the generated list of video paths
+echo "Generated list of video paths:"
+echo "$lst"
 
 
 # -------------------------------------------------
