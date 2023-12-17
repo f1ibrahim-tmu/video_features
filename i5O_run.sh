@@ -15,19 +15,19 @@ for ARGUMENT in "$@"; do
 done
 
 # Specify the root directory
-root_dir="/data/i5O/i5OData/undercover-left/videos/"
+videos_dir="/data/i5O/i5OData/undercover-left/videos/"
 
-echo $root_dir
+echo $videos_dir
 
 # Check if the directory exists
-if [ -d "$root_dir" ]; then
+if [ -d "$videos_dir" ]; then
     # List all folders (directories) within the specified directory
-    echo "Folders in $root_dir:"
-    ls -d "$root_dir"*/ | while read -r folder; do
+    echo "Folders in $videos_dir:"
+    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
         echo "$folder"
     done
 else
-    echo "Directory $root_dir does not exist."
+    echo "Directory $videos_dir does not exist."
 fi
 
 
