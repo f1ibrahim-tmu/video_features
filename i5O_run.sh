@@ -22,19 +22,39 @@ echo $videos_dir
 # Variable to store the list of video paths
 lst="["
 
+# Array to store directories
+directories=()
+
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
-    # List all folders (directories) within the specified directory
-    echo "Folders in $videos_dir:"
-    while IFS= read -r folder; do
-        echo "$folder"
+    # Get directories within the specified directory
+    while IFS= read -r -d '' dir; do
+        directories+=("$dir")
+    done <<< "$(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0)"
+
+    # Iterate through each directory and list files
+    for folder in "${directories[@]}"; do
+        echo "Folder: $folder"
         echo "Files in $folder:"
-        # List all files within each folder
-        ls -p "$folder" | grep -v /  # Lists non-directory files
-    done < <(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d)
+        ls -p "$folder" | grep -v /
+    done
 else
     echo "Directory $videos_dir does not exist."
 fi
+
+
+# Last working code to list subdirectories
+# -----------------------------------------------------------------------------------------
+# # Check if the directory exists
+# if [ -d "$videos_dir" ]; then
+#     # List all folders (directories) within the specified directory
+#     echo "Folders in $videos_dir:"
+#     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
+#         echo "$folder"
+#     done
+# else
+#     echo "Directory $videos_dir does not exist."
+# fi
 
 
 # -------------------------------------------------
