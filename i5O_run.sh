@@ -27,13 +27,8 @@ directories=[]
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
-    # Get directories within the specified directory
-    while IFS= read -r -d '' dir; do
-        directories+="$dir"
-    done <<< "$(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0)"
-
-    # Iterate through each directory and list files
-    for folder in "${directories[@]}"; do
+    # Iterate through directories found by find and list files
+    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' folder; do
         echo "Folder: $folder"
         echo "Files in $folder:"
         ls -p "$folder" | grep -v /
