@@ -20,45 +20,15 @@ root_dir="/data/i5O/i5OData/undercover-left/videos/"
 # Iterate through each subdirectory that contains .mp4 files
 for dir in "$root_dir"*/; do
     if [ -d "$dir" ] && ls -1 "$dir"/*.mp4 &>/dev/null; then
-        # Process .mp4 files in the current directory
-        echo "Processing files in: $dir"
-        IFS=$'\n'
-        set -f
-
-        # build lst
-        lst="["
-
-        count=0
-        
-        for vid in "$dir"; do
-            # ensure that there is at least 20GB of data left
-            if [ $(expr $(df -B1 /data/ | awk 'NR==2 {print $4}') / 1000000000) -gt 10 ]; then
-
-            # unset IFS
-            # set +f
-            echo $vid
-            if [[ $count -ne 0 ]]; then
-              lst="$lst, $vid"
-            else
-              lst="${lst}${vid}"
-            fi
-
-            count=$(expr $count + 1)
-
-            IFS=$'\n'
-            set -f
-
-            fi
-        done
-
-        # Reset IFS and set +f if needed for subsequent operations
-        unset IFS
-        set +f
+        # List subdirectory and .mp4 files in the current directory
+        echo "Directory: $dir"
+        ls "$dir"*.mp4
+        echo "--------------------------"
     fi
 done
 
-lst="$lst]"
-echo $lst
+# lst="$lst]"
+# echo $lst
 
 # run the script
 # python ./main.py \
