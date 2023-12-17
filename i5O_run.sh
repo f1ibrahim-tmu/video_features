@@ -17,6 +17,7 @@ done
 # Specify the root directory
 root_dir="/data/i5O/i5OData/undercover-left/videos/"
 
+echo $root_dir
 # Iterate through each subdirectory
 for dir in "$root_dir"*/; do
     if [ -d "$dir" ]; then
