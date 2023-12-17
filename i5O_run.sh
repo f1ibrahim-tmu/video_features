@@ -17,13 +17,17 @@ done
 # Specify the root directory
 root_dir="/data/i5O/i5OData/undercover-left/videos/"
 
-# Iterate through each subdirectory that contains .mp4 files
+# Iterate through each subdirectory
 for dir in "$root_dir"*/; do
-    if [ -d "$dir" ] && ls -1 "$dir"/*.mp4 &>/dev/null; then
-        # List subdirectory and .mp4 files in the current directory
-        echo "Directory: $dir"
-        ls "$dir"*.mp4
-        echo "--------------------------"
+    if [ -d "$dir" ]; then
+        # Check if the directory contains .mp4 files
+        mp4_files=("$dir"*.mp4)
+        if [ ${#mp4_files[@]} -gt 0 ]; then
+            # List subdirectory and .mp4 files in the current directory
+            echo "Directory: $dir"
+            ls "$dir"*.mp4
+            echo "--------------------------"
+        fi
     fi
 done
 
