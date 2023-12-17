@@ -14,7 +14,7 @@ for ARGUMENT in "$@"; do
 	export "$KEY"="$VALUE"
 done
 
-i5O_videos="/data/i5O/i5OData/undercover-left/videos/20220412/"
+i5O_videos="/data/i5O/i5OData/undercover-right/videos/20220412/"
 echo $i5O_videos
 
 # -------------------------------------------------
@@ -30,7 +30,7 @@ for vid in $(find "$i5O_videos" -name "*.mp4"); do
 
 	# unset IFS
 	# set +f
- 
+  echo $vid
   if [[ $count -ne 0 ]]; then
     lst="$lst, $vid"
   else
@@ -47,7 +47,7 @@ for vid in $(find "$i5O_videos" -name "*.mp4"); do
 done
 
 lst="$lst]"
-echo lst
+echo $lst
 
 # run the script
 # python ./main.py \
