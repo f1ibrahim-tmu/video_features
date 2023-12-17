@@ -18,31 +18,17 @@ done
 root_dir="/data/i5O/i5OData/undercover-left/videos/"
 
 echo $root_dir
-# Iterate through each subdirectory
-for dir in "$root_dir"*/; do
-  echo $dir
-    if [ -d "$dir" ]; then
-        # Check if the directory contains .mp4 files
-        mp4_files="$dir"*.mp4
-        if [ ${#mp4_files[@]} -gt 0 ]; then
-            # List subdirectory and .mp4 files in the current directory
-            echo "Directory: $dir"
-            ls "$dir"*.mp4
-            echo "--------------------------"
-        fi
-    fi
-done
 
-# lst="$lst]"
-# echo $lst
-
-# run the script
-# python ./main.py \
-#   feature_type=i3d \
-#   device="cuda:0" \
-#   video_paths=$lst \
-#   output_path="/data/fady/aar/TemporalMaxer/data/i5O/features_i3d/ \
-#   on_extraction="save_numpy"
+# Check if the directory exists
+if [ -d "$root_dir" ]; then
+    # List all folders (directories) within the specified directory
+    echo "Folders in $root_dir:"
+    ls -d "$root_dir"*/ | while read -r folder; do
+        echo "$folder"
+    done
+else
+    echo "Directory $root_dir does not exist."
+fi
 
 
 # -------------------------------------------------
