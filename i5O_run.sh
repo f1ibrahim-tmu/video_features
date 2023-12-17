@@ -15,6 +15,7 @@ for ARGUMENT in "$@"; do
 done
 
 i5O_videos="/data/i5O/i5OData/undercover-left/videos/20220412/"
+
 echo $i5O_videos
 
 # -------------------------------------------------
@@ -47,7 +48,7 @@ for vid in $(find "$i5O_videos" -name "*.mp4"); do
 done
 
 lst="$lst]"
-echo $lst
+# echo $lst
 
 # run the script
 # python ./main.py \
