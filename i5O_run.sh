@@ -23,13 +23,13 @@ echo $videos_dir
 lst="["
 
 # Array to store directories
-directories=()
+directories=[]
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Get directories within the specified directory
     while IFS= read -r -d '' dir; do
-        directories+=("$dir")
+        directories+="$dir"
     done <<< "$(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0)"
 
     # Iterate through each directory and list files
