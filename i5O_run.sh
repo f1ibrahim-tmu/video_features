@@ -22,13 +22,10 @@ echo $videos_dir
 # Variable to store the list of video paths
 lst="["
 
-# Array to store directories
-directories=[]
-
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Iterate through directories found by find and list files
-    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' folder; do
+    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
         echo "Folder: $folder"
         echo "Files in $folder:"
         ls -p "$folder" | grep -v /
