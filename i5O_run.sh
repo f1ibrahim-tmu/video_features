@@ -23,7 +23,7 @@ echo $i5O_videos
 lst="["
 
 count=0
-for vid in $(find $i5O_videos -name "*.mp4"); do
+for vid in $(find "$i5O_videos" -name "*.mp4"); do
 
   # ensure that there is at least 20GB of data left
   if [ $(expr $(df -B1 /data/ | awk 'NR==2 {print $4}') / 1000000000) -gt 10 ]; then
