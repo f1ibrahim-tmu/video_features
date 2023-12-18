@@ -28,7 +28,7 @@ if [ -d "$videos_dir" ]; then
         echo "Folder: $folder"
         echo "Files in $folder:"
 
-        find "$folder" -maxdepth 1 -type f -name "*.mp4" -print0 | while read -r '' file; do
+        find "$folder" -maxdepth 1 -type f -name "*.mp4" -print0 | while read -r file; do
             result+="Folder: $folder File: $file"$'\n'
         done
 
