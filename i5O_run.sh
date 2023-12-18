@@ -26,7 +26,7 @@ lst="["
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Iterate through directories found by find and list files
-    for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
+    for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d read -r folder); do
         echo "Folder: $folder"
         echo "Files in $folder:"
         ls -p "$folder" | grep -v /
