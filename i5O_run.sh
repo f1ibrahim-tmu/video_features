@@ -16,11 +16,10 @@ done
 
 # Specify the root directory
 videos_dir="/data/i5O/i5OData/undercover-left/videos/"
-
 echo $videos_dir
 
 # Variable to store the list of video paths
-lst="["
+
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
@@ -28,7 +27,7 @@ if [ -d "$videos_dir" ]; then
     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
         echo "Folder: $folder"
         echo "Files in $folder:"
-        ls -p "$folder" | grep -v /
+        lst=$(ls -p "$folder" | grep -v /)
     done
 else
     echo "Directory $videos_dir does not exist."
