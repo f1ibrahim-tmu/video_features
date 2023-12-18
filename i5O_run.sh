@@ -37,7 +37,7 @@ fi
 lst="[$lst]"
 
 # run the script
-python ./main.py \
+python3 ./main.py \
   feature_type=i3d \
   device="cuda:0" \
   video_paths=$lst \
