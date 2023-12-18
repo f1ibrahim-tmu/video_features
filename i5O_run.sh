@@ -28,20 +28,9 @@ if [ -d "$videos_dir" ]; then
     # Find directories and their files
     for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
       echo "Processing: $folder"
-      # Get filename without extension from path
-      file_name=$(basename -- "$folder")
-      echo $file_name
-      # Add to lst
-      lst="$lst\"$file_name\",\n"
-      echo $lst
+      for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
+        echo $file
     done 
-    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
-        for folder do
-            echo "Folder: $folder"
-            echo "Files in $folder:"
-            find "$folder" -maxdepth 1 -type f -name "*.mp4" -print
-        done
-    ' sh {} +
 else
     echo "Directory $videos_dir does not exist."
 fi
