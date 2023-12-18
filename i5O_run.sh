@@ -20,6 +20,7 @@ echo $videos_dir
 
 # Variable to store the list of video paths
 lst="["
+echo "lst is $lst"
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
@@ -30,14 +31,16 @@ if [ -d "$videos_dir" ]; then
         # ls -p "$folder" | grep -v /
 
         find "$folder" -maxdepth 1 -type f -name "*.mp4" | while read -r file; do
+            echo "Files = $file"
             lst="$lst, $file"
+            echo "lst 2 = $lst"
         done
     done
 else
     echo "Directory $videos_dir does not exist."
 fi
 
-lst="$lst]"
+lst="End of lst is: $lst]"
 echo $lst
 
 
