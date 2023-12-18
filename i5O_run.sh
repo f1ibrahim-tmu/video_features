@@ -18,19 +18,20 @@ done
 videos_dir="/data/i5O/i5OData/undercover-left/videos/"
 echo $videos_dir
 
-# Variable to store file paths
+# -------------------------------------------------------------------------------------------------
+
+# build lst
 lst="["
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Iterate through directories found by find and list files
-    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
-        # echo "Folder: $folder"
-        # echo "Files in $folder:"
-        # ls -p "$folder" | grep -v /
+    for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
+        echo "Folder: $folder"
+        echo "Files in $folder:"
+        ls -p "$folder" | grep -v /
 
-        find "$folder" -maxdepth 1 -type f -name "*.mp4"
-        while read -r file; do
+        for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
             lst="$lst, $file"
         done
     done
@@ -38,8 +39,26 @@ else
     echo "Directory $videos_dir does not exist."
 fi
 
-# lst="$lst]"
-# echo $lst
+lst="$lst]"
+echo $lst
+
+# -------------------------------------------------------------------------------------------------
+
+# # Check if the directory exists
+# if [ -d "$videos_dir" ]; then
+#     # Iterate through directories found by find and list files
+#     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
+#         # echo "Folder: $folder"
+#         # echo "Files in $folder:"
+#         # ls -p "$folder" | grep -v /
+
+#         find "$folder" -maxdepth 1 -type f -name "*.mp4" | while read -r file; do
+#             echo $file
+#         done
+#     done
+# else
+#     echo "Directory $videos_dir does not exist."
+# fi
 
 
 # -------------------------------------------------
