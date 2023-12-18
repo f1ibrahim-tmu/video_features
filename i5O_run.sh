@@ -28,24 +28,11 @@ if [ -d "$videos_dir" ]; then
         echo "Folder: $folder"
         echo "Files in $folder:"
         lst=$(ls -p "$folder" | grep -v /)
+        echo $lst
     done
 else
     echo "Directory $videos_dir does not exist."
 fi
-
-
-# Last working code to list subdirectories
-# -----------------------------------------------------------------------------------------
-# # Check if the directory exists
-# if [ -d "$videos_dir" ]; then
-#     # List all folders (directories) within the specified directory
-#     echo "Folders in $videos_dir:"
-#     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
-#         echo "$folder"
-#     done
-# else
-#     echo "Directory $videos_dir does not exist."
-# fi
 
 
 # -------------------------------------------------
