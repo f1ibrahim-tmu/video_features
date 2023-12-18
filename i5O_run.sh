@@ -20,27 +20,25 @@ echo $videos_dir
 
 # -------------------------------------------------------------------------------------------------
 
-# build lst
-lst="["
+# # build lst
+# lst="["
 
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
-    # Iterate through directories found by find and list files
-    for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d read -r folder); do
-        echo "Folder: $folder"
-        echo "Files in $folder:"
-        ls -p "$folder" | grep -v /
-
-        for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
-            lst="$lst, $file"
+    # Find directories and their files
+    find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
+        for folder do
+            echo "Folder: $folder"
+            echo "Files in $folder:"
+            find "$folder" -maxdepth 1 -type f -name "*.mp4" -print
         done
-    done
+    ' sh {} +
 else
     echo "Directory $videos_dir does not exist."
 fi
 
-lst="$lst]"
-echo $lst
+# lst="$lst]"
+# echo $lst
 
 # -------------------------------------------------------------------------------------------------
 
