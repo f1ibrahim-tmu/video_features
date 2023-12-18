@@ -42,5 +42,4 @@ python ./main.py \
   device="cuda:0" \
   video_paths=$lst \
   output_path="/data/fady/aar/TemporalMaxer/data/i5O/features_i3d/ \
-  on_extraction="save_numpy" 
-  
+  on_extraction="save_numpy"
