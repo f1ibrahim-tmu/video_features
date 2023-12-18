@@ -26,7 +26,7 @@ echo $videos_dir
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Find directories and their files
-    for folder in (find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
+    for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
       echo "Processing: ${folder##*/}"
     done 
     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
