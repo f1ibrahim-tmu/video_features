@@ -2,9 +2,6 @@
 # This script is to run the program one video at a time automatically (video paths variable takes a list of video path inputs), and ensure that each folder has only one videos.
 #
 
-# IFS=$'\n'
-# set -f
-
 for ARGUMENT in "$@"; do
 	KEY=$(echo $ARGUMENT | cut -f1 -d=)
 
@@ -20,16 +17,11 @@ echo $videos_dir
 
 # -------------------------------------------------------------------------------------------------
 
-# build lst
-lst="["
-
 # Check if the directory exists
 if [ -d "$videos_dir" ]; then
     # Find directories and their files
     for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
-      echo "Processing: $folder"
       for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
-        echo $file
         lst="$lst, $file"
       done
     done 
@@ -37,7 +29,7 @@ else
     echo "Directory $videos_dir does not exist."
 fi
 
-lst="$lst]"
+lst="[$lst]"
 echo $lst
 
 # -------------------------------------------------------------------------------------------------
