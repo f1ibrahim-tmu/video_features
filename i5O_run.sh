@@ -27,8 +27,13 @@ if [ -d "$videos_dir" ]; then
     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d | while read -r folder; do
         echo "Folder: $folder"
         echo "Files in $folder:"
-        lst=$(ls -p "$folder" | grep -v /)
-        echo $lst
+
+        find "$folder" -maxdepth 1 -type f -name "*.mp4" -print0 | while read -r -d '' file; do
+            result+="Folder: $folder File: $file"$'\n'
+        done
+
+        ls -p "$folder" | grep -v /
+        echo $result
     done
 else
     echo "Directory $videos_dir does not exist."
