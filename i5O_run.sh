@@ -37,6 +37,7 @@ else
     echo "Directory $videos_dir does not exist."
 fi
 
+lst="$lst]"\
 echo $lst
 
 
