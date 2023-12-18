@@ -27,7 +27,13 @@ echo $videos_dir
 if [ -d "$videos_dir" ]; then
     # Find directories and their files
     for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
-      echo "Processing: ${folder##*/}"
+      echo "Processing: $folder"
+      # Get filename without extension from path
+      file_name=$(basename -- "$folder")
+      echo $file_name
+      # Add to lst
+      lst="$lst\"$file_name\",\n"
+      echo $lst
     done 
     find "$videos_dir" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
         for folder do
