@@ -26,7 +26,7 @@ if [ -d "$videos_dir" ]; then
         if [ -z "$lst" ]; then
             lst="$file"
         else
-            lst="$lst, $file"
+            lst="$lst,$file"
         fi
       done
     done 
