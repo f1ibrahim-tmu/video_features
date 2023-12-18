@@ -22,7 +22,12 @@ if [ -d "$videos_dir" ]; then
     # Find directories and their files
     for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
       for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
-        lst="$lst, $file"
+        # Append to lst without space in the beginning
+        if [ -z "$lst" ]; then
+            lst="$file"
+        else
+            lst="$lst, $file"
+        fi
       done
     done 
 else
