@@ -30,6 +30,7 @@ if [ -d "$videos_dir" ]; then
       echo "Processing: $folder"
       for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
         echo $file
+      done
     done 
 else
     echo "Directory $videos_dir does not exist."
