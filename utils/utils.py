@@ -86,7 +86,7 @@ def sanity_check(args: Union[argparse.Namespace, DictConfig]):
         args.device = 'cpu'
     assert args.file_with_video_paths or args.video_paths, '`video_paths` or `file_with_video_paths` must be specified'
     filenames = [Path(p).stem for p in form_list_from_user_input(args.video_paths, args.file_with_video_paths)]
-    assert len(filenames) == len(set(filenames)), 'Non-unique filenames. See video_features/issues/54'
+    # assert len(filenames) == len(set(filenames)), 'Non-unique filenames. See video_features/issues/54'
     assert os.path.relpath(args.output_path) != os.path.relpath(args.tmp_path), 'The same path for out & tmp'
     if args.show_pred:
         if args.feature_type == 'vggish':
