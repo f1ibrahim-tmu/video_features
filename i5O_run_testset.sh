@@ -12,10 +12,10 @@ for ARGUMENT in "$@"; do
 done
 
 # Specify the root directory
-videos_dir=$1
+videos_dir="$1"
 echo "Video Input Directory: $videos_dir"
 # Specify the CUDA state to use
-CUDA=$2
+CUDA="$2"
 echo "CUDA state to use: $CUDA"
 
 # -------------------------------------------------------------------------------------------------
