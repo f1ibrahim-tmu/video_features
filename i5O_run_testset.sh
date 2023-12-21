@@ -12,13 +12,16 @@ for ARGUMENT in "$@"; do
 done
 
 # Specify the root directory
-videos_dir="/data/i5O/i5OData/undercover-left/videos/"
-echo $videos_dir
+videos_dir=$1
+echo "Video Input Directory: $videos_dir"
+# Specify the CUDA state to use
+CUDA=$2
+echo "CUDA state to use: $CUDA"
 
 # -------------------------------------------------------------------------------------------------
 
 # Check if the directory exists
-if [ -d "$videos_dir" ]; then
+if [ -d "$video_dir" ]; then
     # Find directories and their files
     for folder in $(find "$videos_dir" -mindepth 1 -maxdepth 1 -type d); do
       for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
@@ -39,7 +42,7 @@ lst="[$lst]"
 # run the script
 python3 ./main.py \
   feature_type=i3d \
-  device="cuda:0" \
+  device="cuda:$2" \
   video_paths=$lst \
   output_path="/data/fady/aar/TemporalMaxer/data/i5O" \
   on_extraction="save_numpy" 
