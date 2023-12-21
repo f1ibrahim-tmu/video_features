@@ -2,14 +2,14 @@
 # This script is to run the program one video at a time automatically (video paths variable takes a list of video path inputs), and ensure that each folder has only one videos.
 #
 
-for ARGUMENT in "$@"; do
-	KEY=$(echo $ARGUMENT | cut -f1 -d=)
+# for ARGUMENT in "$@"; do
+# 	KEY=$(echo $ARGUMENT | cut -f1 -d=)
 
-	KEY_LENGTH=${#KEY}
-	VALUE="${ARGUMENT:$KEY_LENGTH+1}"
+# 	KEY_LENGTH=${#KEY}
+# 	VALUE="${ARGUMENT:$KEY_LENGTH+1}"
 
-	export "$KEY"="$VALUE"
-done
+# 	export "$KEY"="$VALUE"
+# done
 
 # Specify the root directory
 videos_dir="$1"
