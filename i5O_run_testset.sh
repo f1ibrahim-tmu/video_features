@@ -12,11 +12,11 @@
 # done
 
 # Specify the root directory
-videos_dir="$1"
+videos_dir="/data/i5O/i5OData/undercover-left/videos_i3d_test"
 echo "Video Input Directory: $videos_dir"
 # Specify the CUDA state to use
-CUDA="$2"
-echo "CUDA state to use: $CUDA"
+# CUDA="$2"
+# echo "CUDA state to use: $CUDA"
 
 # -------------------------------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ lst="[$lst]"
 # run the script
 python3 ./main.py \
   feature_type=i3d \
-  device="cuda:$2" \
+  device="cuda:0" \
   video_paths=$lst \
   output_path="/data/fady/aar/TemporalMaxer/data/i5O" \
   on_extraction="save_numpy" 
