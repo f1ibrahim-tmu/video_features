@@ -12,7 +12,7 @@
 # done
 
 # Specify the root directory
-videos_dir="/data/i5O/i5OData/undercover-left/videos_i3d_test"
+videos_dir="/data/i5O/i5OData/undercover-left/videos_i3d_test/"
 echo "Video Input Directory: $videos_dir"
 # Specify the CUDA state to use
 # CUDA="$2"
