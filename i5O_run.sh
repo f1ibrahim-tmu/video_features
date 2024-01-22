@@ -37,14 +37,16 @@ else
 fi
 
 lst="[$lst]"
-echo $lst
 
-# # run the script
+$output_path="/data/fady/aar/TemporalMaxer/data/i5O_redo/undercover-left_${folder##*/}_${file##*/}.npy"
+echo $output_path
+
+# run the script
 # python3 ./main.py \
 #   feature_type=i3d \
 #   device="cuda:0" \
 #   video_paths=$lst \
-#   output_path="/data/fady/aar/TemporalMaxer/data/i5O" \
+#   output_path="$output_path" \
 #   on_extraction="save_numpy" 
 
 
