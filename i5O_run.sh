@@ -24,6 +24,8 @@ if [ -d "$videos_dir" ]; then
       for file in $(find "$folder" -maxdepth 1 -type f -name "*.mp4"); do
         # Append to lst without space in the beginning
         if [ -z "$lst" ]; then
+            echo "Folder is: $folder"
+            echo "File is: $file"
             lst="$file"
         else
             lst="$lst,$file"
@@ -35,14 +37,15 @@ else
 fi
 
 lst="[$lst]"
+echo $lst
 
-# run the script
-python3 ./main.py \
-  feature_type=i3d \
-  device="cuda:0" \
-  video_paths=$lst \
-  output_path="/data/fady/aar/TemporalMaxer/data/i5O" \
-  on_extraction="save_numpy" 
+# # run the script
+# python3 ./main.py \
+#   feature_type=i3d \
+#   device="cuda:0" \
+#   video_paths=$lst \
+#   output_path="/data/fady/aar/TemporalMaxer/data/i5O" \
+#   on_extraction="save_numpy" 
 
 
 # -------------------------------------------------------------------------------------------------
