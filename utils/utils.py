@@ -52,7 +52,7 @@ def show_predictions_on_dataset(logits: torch.FloatTensor, dataset: Union[str, L
 
 def make_path(output_root, video_path, output_key, ext):
     # extract file name and change the extention
-    fname = f'{Path(video_path).stem}_{output_key}{ext}'
+    fname = f'{Path(video_path).parts[3].replace("/", "_")}_{Path(video_path).parts[5].replace("/", "_")}_{Path(video_path).stem}_{output_key}{ext}'
     # construct the paths to save the features
     return os.path.join(output_root, fname)
 
