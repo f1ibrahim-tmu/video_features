@@ -36,13 +36,10 @@ fi
 
 lst="[$lst]"
 
-$output_path="/data/fady/aar/TemporalMaxer/data/i5O_redo"
-echo $output_path
-
 # run the script
 python3 ./main.py \
   feature_type=i3d \
   device="cuda:0" \
   video_paths=$lst \
-  output_path="$output_path" \
+  output_path="/data/fady/aar/TemporalMaxer/data/i5O_redo" \
   on_extraction="save_numpy" 
