@@ -15,7 +15,7 @@ def argument_parser():
         "--feature_dir",
         "--feature_directory",
         type=str,
-        default="/root/models/video_features/output_video-features_thumos_i3d/i3d/",
+        default="./i3d",
         help="directory where the features are stored (input directory) and saved to (output directory)",
     )
     parser.add_argument(
