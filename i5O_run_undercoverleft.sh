@@ -40,6 +40,9 @@ lst="[$lst]"
 python3 ./main.py \
   feature_type=i3d \
   device="cuda:0" \
+  flow_type=raft \
   video_paths=$lst \
+  stack_size=16 \
+  step_size=4 \
   output_path="/data/fady/aar/TemporalMaxer/data/i5O_redo" \
   on_extraction="save_numpy" 
